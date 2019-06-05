@@ -10,6 +10,7 @@ from teapot import json  # convenience import that will use `python-rapidjson` i
 
 
 class ReqRes:
+    # self.client is an instance of `HTTPClient` that gets added automatically to your class
     def login(self):
         return self.client.post("/login", body=json.dumps(self.credentials))
 
