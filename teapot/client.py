@@ -5,13 +5,17 @@ import teapot
 
 
 class HTTPClient:
-    def __init__(self, base_url="", headers=None, **kwargs):
-        # TODO: do something with the kwargs and de-hard code the cert stuff
+    def __init__(self, base_url="", **kwargs):
         self.base_url = base_url
-        self._http = urllib3.PoolManager(
-            cert_reqs="CERT_REQUIRED",
-            ca_certs=certifi.where(),
-            headers=headers)
+
+        if not kwargs:
+            kwargs = {}
+        if "cert_reqs" not in kwargs:
+            kwargs["cert_reqs"] = "CERT_REQUIRED"
+        if "ca_certs" not in kwargs:
+            kwargs["ca_certs"] = certifi.where()
+
+        self._http = urllib3.PoolManager(**kwargs)
 
     def _get_uri(self, url):
         if self.base_url != "":

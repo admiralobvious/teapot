@@ -2,8 +2,12 @@ import teapot
 
 
 class HTTPAPI:
-    def __init__(self, base_url="", headers=None, **kwargs):
-        self.client = teapot.HTTPClient(base_url, headers=headers, **kwargs)
+    def __init__(self, base_url="", headers=None, client_options=None, **kwargs):
+        if not client_options:
+            client_options = {}
+        client_options["headers"] = headers
+
+        self.client = teapot.HTTPClient(base_url, **client_options)
         self._attrs = kwargs
         self._resources = {}
 
