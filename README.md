@@ -32,7 +32,7 @@ credentials = {
     "password": "cityslicka"
 }  # gets automatically added as an attribute on `ReqRes`
 
-api = teapot.HTTPApi(base_url="https://reqres.in/api", headers=headers, credentials=credentials)
+api = teapot.HTTPAPI(base_url="https://reqres.in/api", headers=headers, credentials=credentials)
 api.add_resource(ReqRes())
 
 login = api.ReqRes.login()
