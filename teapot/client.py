@@ -6,6 +6,7 @@ import teapot
 
 class HTTPClient:
     def __init__(self, base_url="", headers=None, **kwargs):
+        # TODO: do something with the kwargs and de-hard code the cert stuff
         self.base_url = base_url
         self._http = urllib3.PoolManager(
             cert_reqs="CERT_REQUIRED",
