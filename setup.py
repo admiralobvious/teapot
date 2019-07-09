@@ -11,9 +11,15 @@ setup(
     packages=["teapot"],
     zip_safe=False,
     install_requires=[
+        "certifi>=2019.3.9",
+        "urllib3>=1.25.3",
     ],
     setup_requires=["pytest-runner>=5.1"],
-    tests_require=["pytest>=4.5"],
+    tests_require=[
+        "pytest>=5.0.1",
+        "python-rapidjson>=0.7.2",
+        "urllib3-mock>=0.3.3"
+    ],
     platforms="any",
     classifiers=[
         "Intended Audience :: Developers",
@@ -23,3 +29,4 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules"
     ]
 )
+
